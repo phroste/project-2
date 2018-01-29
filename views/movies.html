@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Movies to Watch</title>
+  <link rel="stylesheet" href="">
+  <style>
+    #container {
+      /*display: flex;
+      flex-direction: column;
+      justify-content: : center;
+      align-content: center;*/
+      margin-left: 40%;
+    }
+
+
+  </style>
+</head>
+<body>
+   <div id="container">
+
+    <h1>Movies to Watch</h1>
+    <a href="/movies">All the Movies to Watch</a>
+    <a href="/movies/new">Add a New Movie</a>
+
+    {{#allMoviesData}}
+    <div id="movie-1">
+      <p>Movie: {{Title}}</p>
+      <p>Year: {{Year}}</p>
+      <p>IMDB: {{Ratings.0.Value}}</p>
+      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+      <img src={{Poster}}/>
+    </div>
+    {{/allMoviesData}}
+
+    {{#allMoviesData2}}
+    <div id="movie-2">
+      <p>Movie: {{Title}}</p>
+      <p>Year: {{Year}}</p>
+      <p>IMDB: {{Ratings.0.Value}}</p>
+      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+      <img src={{Poster}}/>
+    </div>
+    {{/allMoviesData2}}
+
+    {{#allMoviesData3}}
+    <div id="movie-3">
+      <p>Movie: {{Title}}</p>
+      <p>Year: {{Year}}</p>
+      <p>IMDB: {{Ratings.0.Value}}</p>
+      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+      <img src={{Poster}}/>
+    </div>
+    {{/allMoviesData3}}
+
+    {{#allMoviesData4}}
+    <div id="movie-4">
+      <p>Movie: {{Title}}</p>
+      <p>Year: {{Year}}</p>
+      <p>IMDB: {{Ratings.0.Value}}</p>
+      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+      <img src={{Poster}}/>
+    </div>
+    {{/allMoviesData4}}
+
+    {{#allMoviesData5}}
+    <div id="movie-5">
+      <p>Movie: {{Title}}</p>
+      <p>Year: {{Year}}</p>
+      <p>IMDB: {{Ratings.0.Value}}</p>
+      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+      <img src={{Poster}}/>
+    </div>
+    {{/allMoviesData5}}
+
+  </div>
+
+</body>
+</html>
