@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS moviestowatch;
+DROP TABLE IF EXISTS movies;
 
-CREATE TABLE moviestowatch (
+CREATE TABLE movies (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   year INTEGER,

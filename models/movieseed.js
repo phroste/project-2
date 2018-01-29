@@ -10,27 +10,27 @@ const movieModel = {};
 //helper function for seeding the movie data
 function movieNameSeedStep(movieData) {
   //because the returning API data is an object, a forEach or map method wouldn't work? maybe Object.entries()
-  movieData.results.map(movie => {
-    console.log(movie);
-    db
-      .none(
-        "INSERT INTO moviestowatch (title, year, imdb, rottentomatoes, anticipation, poster) VALUES ($1, $2, $3, $4, $5, $6);",
-        [
-          movie.title,
-          movie.year,
-          movie.imdb,
-          movie.rottentomatoes,
-          movie.anticipation,
-          movie.poster
-        ]
-      )
-      .catch(err => {
-        console.log(
-          "Error encounted in movieNameSeedStep pgpromise call, error:",
-          err
-        );
-      });
-  });
+  // movieData(movie => {
+  // console.log(movie);
+  db
+    .none(
+      "INSERT INTO movies (title, year, imdb, rottentomatoes, anticipation, poster) VALUES ($1, $2, $3, $4, $5, $6);",
+      [
+        movieData.title,
+        movieData.year,
+        movieData.imdb,
+        movieData.rottentomatoes,
+        movieData.anticipation,
+        movieData.poster
+      ]
+    )
+    .catch(err => {
+      console.log(
+        "Error encounted in movieNameSeedStep pgpromise call, error:",
+        err
+      );
+    });
+  // });
   //if there's a link to more movie information, recursively follow it
   if (movieData.next) {
     axios({
@@ -68,7 +68,7 @@ movieModel.seedAllMovieNames = function() {
 //middleware
 movieModel.allmovie = (req, res, next) => {
   db
-    .manyOrNone("SELECT * FROM moviestowatch ORDER BY title")
+    .manyOrNone("SELECT * FROM movies ORDER BY title")
     .then(movieResults => {
       res.locals.allMovieData = movieResults;
       console.log(movieResults);
@@ -83,9 +83,7 @@ movieModel.allmovie = (req, res, next) => {
 movieModel.movieById = (req, res, next) => {
   console.log("in movieModel.movieById");
   db
-    .one("SELECT * FROM moviestowatch WHERE moviestowatch.id = $1", [
-      req.params.movieId
-    ])
+    .one("SELECT * FROM movies WHERE movies.id = $1", [req.params.movieId])
     .then(data => {
       console.log("made it here");
       const url = data.url;
