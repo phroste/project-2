@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const Movies = require("../models/movies.js");
+// const movieModel = require("../models/movieseed.js");
+const movieModel = require("../models/movie-seed.js");
 
 router.get(
   "/",
@@ -10,10 +12,10 @@ router.get(
   Movies.allMovies5,
   (req, res, next) => {
     console.log("hitting movies/");
-    // res.send("this 'movies' route works");
+    // res.send("this 'index' route works");
     // res.render("main", { allMoviesData: res.locals.allMoviesData });
     // don't need to set res.locals to an object if only displaying 1 thing
-    // res.render("movies", res.locals.allMoviesData);
+    // res.render("index", res.locals.allMoviesData);
     res.render("movies", {
       allMoviesData: res.locals.allMoviesData,
       allMoviesData2: res.locals.allMoviesData2,
@@ -24,11 +26,37 @@ router.get(
   }
 );
 
-router.get("/new", (req, res, next) => {
-  // res.send("this 'movies/new' route works");
-  res.render("new");
+router.get("/search", (req, res, next) => {
+  // res.send("this 'movies/search' route works");
+  res.render("search");
 });
 
-// router.get("/");
+//get request sent from the server to client. page for each individual movie request
+// router.get("/:newId", (req, res, next) => {
+//   // res.send("/:newId route works");
+//   res.render("movie-new");
+// });
+
+// router.post("/addmovie", movieModel.addmovie, (req, res) => {
+//   res.render("movie-new", { movieData: res.locals.data });
+// });
+router.post("/addmovie", movieModel.create, (req, res, next) => {
+  res.json({ id: res.locals.newMovieId, body: req.body });
+});
+
+// //post request
+// router.post("/", (req, res, next) => {
+//   // res.json({ id: res.locals.newMovieId, body: req.body });
+// });
+
+//edit request
+router.get("/:newId/edit", (req, res, next) => {
+  // res.render("edit-movie", res.locals.movieData);
+  res.send("edit request route working");
+});
+
+router.delete("/:movieId", (req, res, next) => {
+  // res.json({ id: req.params.movieId });
+});
 
 module.exports = router;

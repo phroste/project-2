@@ -88,4 +88,20 @@ Movies.allMovies5 = (req, res, next) => {
     });
 };
 
+// Movies.edit = (req, res, next) => {
+//   const id = req.params.newId;
+//   axios({
+//     url: `http://localhost:3000/movies/${id}/`,
+//     method: "put"
+//   })
+//     .then(data => {
+//       res.locals.movieInfo = data.data;
+//       next();
+//     })
+//     .catch(error => {
+//       console.log("error encountered in movies.findById. Error:", error);
+//       next(error);
+//     });
+// };
+
 module.exports = Movies;

@@ -8,12 +8,12 @@ const movieModel = {};
 //seed the database
 
 //helper function for seeding the movie data
-function movieNameSeedStep(movieData) {
+movieModel.addmovie = function movieNameSeedStep(movieData) {
   //because the returning API data is an object, a forEach or map method wouldn't work? maybe Object.entries()
   // movieData(movie => {
   // console.log(movie);
   db
-    .none(
+    .manyOrNone(
       "INSERT INTO movies (title, year, imdb, rottentomatoes, anticipation, poster) VALUES ($1, $2, $3, $4, $5, $6);",
       [
         movieData.title,
@@ -48,7 +48,7 @@ function movieNameSeedStep(movieData) {
         );
       });
   }
-}
+};
 
 //not middleware. this is a function we'll use in db/seed.js to set up the database
 movieModel.seedAllMovieNames = function() {
