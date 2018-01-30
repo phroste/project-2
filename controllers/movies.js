@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Movies = require("../models/movies.js");
 // const movieModel = require("../models/movieseed.js");
-const movieModel = require("../models/movie-seed.js");
+const movie = require("../models/movie-seed.js");
 
 router.get(
   "/",
@@ -32,31 +32,33 @@ router.get("/search", (req, res, next) => {
 });
 
 //get request sent from the server to client. page for each individual movie request
-// router.get("/:newId", (req, res, next) => {
-//   // res.send("/:newId route works");
-//   res.render("movie-new");
-// });
-
-// router.post("/addmovie", movieModel.addmovie, (req, res) => {
-//   res.render("movie-new", { movieData: res.locals.data });
-// });
-router.post("/addmovie", movieModel.create, (req, res, next) => {
-  res.json({ id: res.locals.newMovieId, body: req.body });
+router.get("/:newId", (req, res, next) => {
+  // res.send("/:newId route works");
+  res.render("movie-new");
 });
 
-// //post request
+router.post("/movie-new", movie.create, (req, res) => {
+  res.redirect("/movies");
+});
+// router.post("/movie-new", movie.create, (req, res, next) => {
+//   res.json({ id: res.locals.newMovieId, body: req.body });
+// });
+
+//post request
 // router.post("/", (req, res, next) => {
-//   // res.json({ id: res.locals.newMovieId, body: req.body });
+//   res.json({ id: res.locals.newMovieId, body: req.body });
 // });
 
 //edit request
+//'movies/1/edit'
 router.get("/:newId/edit", (req, res, next) => {
-  // res.render("edit-movie", res.locals.movieData);
-  res.send("edit request route working");
+  //   // res.render("edit-movie", res.locals.movieData);
+  res.render("movie-edit");
+  // res.send("edit request route working");
 });
 
-router.delete("/:movieId", (req, res, next) => {
-  // res.json({ id: req.params.movieId });
-});
+// router.delete("/:movieId", (req, res, next) => {
+//   // res.json({ id: req.params.movieId });
+// });
 
 module.exports = router;

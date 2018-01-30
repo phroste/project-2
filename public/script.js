@@ -36,6 +36,11 @@ $(function() {
   }
 
   function appendToDom(title, year, imdb, rottenTomatoes, poster) {
+    var $hiddenInput = $("<input>").attr({
+      type: "hidden",
+      value: title,
+      name: "title"
+    });
     var $title = $("<div/>", { text: `Title: ${title}` });
     var $year = $("<div/>", {
       text: `Year: ${year}`
@@ -51,7 +56,8 @@ $(function() {
       src: `${poster}`
     });
 
-    $("#result").append($title, $year, $imdb, $rottenTomatoes, $poster);
+    $("#movie-data").append($title, $year, $imdb, $rottenTomatoes, $poster);
+    $("#result").append($hiddenInput);
   }
 
   function removePrevSearch() {
