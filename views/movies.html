@@ -29,7 +29,8 @@
       <p>Movie: {{Title}}</p>
       <p>Year: {{Year}}</p>
       <p>IMDB: {{Ratings.0.Value}}</p>
-      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+   <!--    <p>Rotten Tomatoes: {{Ratings.1.Value}}</p> -->
+      <p>Anticipation: {{Metascore}}</p>
       <img src={{Poster}}/>
     </div>
     {{/allMoviesData}}
@@ -39,7 +40,8 @@
       <p>Movie: {{Title}}</p>
       <p>Year: {{Year}}</p>
       <p>IMDB: {{Ratings.0.Value}}</p>
-      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+<!--       <p>Rotten Tomatoes: {{Ratings.1.Value}}</p> -->
+      <p>Anticipation: {{Metascore}}</p>
       <img src={{Poster}}/>
     </div>
     {{/allMoviesData2}}
@@ -49,7 +51,8 @@
       <p>Movie: {{Title}}</p>
       <p>Year: {{Year}}</p>
       <p>IMDB: {{Ratings.0.Value}}</p>
-      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+<!--       <p>Rotten Tomatoes: {{Ratings.1.Value}}</p> -->
+      <p>Anticipation: {{Metascore}}</p>
       <img src={{Poster}}/>
     </div>
     {{/allMoviesData3}}
@@ -59,7 +62,8 @@
       <p>Movie: {{Title}}</p>
       <p>Year: {{Year}}</p>
       <p>IMDB: {{Ratings.0.Value}}</p>
-      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+<!--       <p>Rotten Tomatoes: {{Ratings.1.Value}}</p> -->
+      <p>Anticipation: {{Metascore}}</p>
       <img src={{Poster}}/>
     </div>
     {{/allMoviesData4}}
@@ -69,10 +73,23 @@
       <p>Movie: {{Title}}</p>
       <p>Year: {{Year}}</p>
       <p>IMDB: {{Ratings.0.Value}}</p>
-      <p>Rotten Tomatoes: {{Ratings.1.Value}}</p>
+<!--       <p>Rotten Tomatoes: {{Ratings.1.Value}}</p> -->
+      <p>Anticipation: {{Metascore}}</p>
       <img src={{Poster}}/>
     </div>
     {{/allMoviesData5}}
+
+    {{#allLibrary}}
+    <div id="movie-5">
+      <p>Movie: {{title}}</p>
+      <p>Year: {{year}}</p>
+      <p>IMDB: {{imdb}}</p>
+<!--       <p>Rotten Tomatoes: {{rottentomatoes}}</p> -->
+      <p>Anticipation: {{anticipation}}</p>
+      <img src={{poster}}/>
+    </div>
+    {{/allLibrary}}
+
 
   </div>
 

@@ -57,19 +57,19 @@
 //   //   }
 //   // });
 //select the form
-$("#result").submit(function(e) {
-  e.preventDefault();
+// $("#result").submit(function(e) {
+//   e.preventDefault();
 
-  const data = $(this).serialize();
-  console.log("data ", data);
+//   const data = $(this).serialize();
+//   console.log("data ", data);
 
-  $.ajax({
-    url: "/search",
-    type: "POST",
-    success: function(data) {
-      console.log("data received ", data);
-      // window.location.href = `/movies/${data.id}`;
-      window.location.href = `/movies/movies-new`;
-    }
-  });
-});
+//   $.ajax({
+//     url: "/search",
+//     type: "POST",
+//     success: function(data) {
+//       console.log("data received ", data);
+//       // window.location.href = `/movies/${data.id}`;
+//       window.location.href = `/movies/movies-new`;
+//     }
+//   });
+// });

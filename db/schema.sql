@@ -4,8 +4,7 @@ CREATE TABLE movies (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   year INTEGER,
-  imdb INTEGER,
-  rottentomatoes INTEGER,
+  imdb VARCHAR(255),
   anticipation INTEGER,
   poster TEXT
 );

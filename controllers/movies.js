@@ -10,6 +10,7 @@ router.get(
   Movies.allMovies3,
   Movies.allMovies4,
   Movies.allMovies5,
+  movie.allLibrary,
   (req, res, next) => {
     console.log("hitting movies/");
     // res.send("this 'index' route works");
@@ -21,7 +22,8 @@ router.get(
       allMoviesData2: res.locals.allMoviesData2,
       allMoviesData3: res.locals.allMoviesData3,
       allMoviesData4: res.locals.allMoviesData4,
-      allMoviesData5: res.locals.allMoviesData5
+      allMoviesData5: res.locals.allMoviesData5,
+      allLibrary: res.locals.movieData
     });
   }
 );

@@ -28,19 +28,59 @@ $(function() {
     var title = responseData.Title;
     var year = responseData.Year;
     var imdb = responseData.Ratings[0]["Value"];
-    var rottenTomatoes = responseData.Ratings[1]["Value"];
+    // var rottenTomatoes = responseData.Ratings[1]["Value"];
+    var anticipation = responseData.Metascore;
     var poster = responseData.Poster;
     console.log(poster);
     //pass the variables in as parameters in the appendToDom function and invoke it
-    appendToDom(title, year, imdb, rottenTomatoes, poster);
+    // appendToDom(title, year, imdb, rottenTomatoes, anticipation, poster);
+    appendToDom(title, year, imdb, anticipation, poster);
   }
 
-  function appendToDom(title, year, imdb, rottenTomatoes, poster) {
-    var $hiddenInput = $("<input>").attr({
+  function appendToDom(
+    title,
+    year,
+    imdb,
+    // rottenTomatoes,
+    anticipation,
+    poster
+  ) {
+    var $hiddenInput1 = $("<input>").attr({
       type: "hidden",
       value: title,
       name: "title"
     });
+
+    var $hiddenInput2 = $("<input>").attr({
+      type: "hidden",
+      value: year,
+      name: "year"
+    });
+
+    var $hiddenInput3 = $("<input>").attr({
+      type: "hidden",
+      value: imdb,
+      name: "imdb"
+    });
+
+    // var $hiddenInput4 = $("<input>").attr({
+    //   type: "hidden",
+    //   value: rottenTomatoes,
+    //   name: "rottenTomatoes"
+    // });
+
+    var $hiddenInput4 = $("<input>").attr({
+      type: "hidden",
+      value: anticipation,
+      name: "anticipation"
+    });
+
+    var $hiddenInput5 = $("<input>").attr({
+      type: "hidden",
+      value: poster,
+      name: "poster"
+    });
+
     var $title = $("<div/>", { text: `Title: ${title}` });
     var $year = $("<div/>", {
       text: `Year: ${year}`
@@ -48,16 +88,33 @@ $(function() {
     var $imdb = $("<div/>", {
       text: `IMDB: ${imdb}`
     });
-    var $rottenTomatoes = $("<div/>", {
-      text: `Rotten Tomatoes: ${rottenTomatoes}`
+    // var $rottenTomatoes = $("<div/>", {
+    //   text: `Rotten Tomatoes: ${rottenTomatoes}`
+    // });
+    var $anticipation = $("<div/>", {
+      text: `Anticipation: ${anticipation}`
     });
     var $poster = $("<img/>", {
       id: "poster",
       src: `${poster}`
     });
 
-    $("#movie-data").append($title, $year, $imdb, $rottenTomatoes, $poster);
-    $("#result").append($hiddenInput);
+    $("#movie-data").append(
+      $title,
+      $year,
+      $imdb,
+      // $rottenTomatoes,
+      $anticipation,
+      $poster
+    );
+    // $("#result").append($hiddenInput1, $hiddenInput2);
+    $("#result").append(
+      $hiddenInput1,
+      $hiddenInput2,
+      $hiddenInput3,
+      $hiddenInput4,
+      $hiddenInput5
+    );
   }
 
   function removePrevSearch() {
