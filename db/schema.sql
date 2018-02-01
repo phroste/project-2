@@ -8,3 +8,10 @@ CREATE TABLE movies (
   anticipation INTEGER,
   poster TEXT
 );
+
+-- DROP TABLE IF EXISTS reviews ;
+
+-- CREATE TABLE reviews (
+--   id SERIAL PRIMARY KEY REFERENCES movies (id) ON DELETE CASCADE ON UPDATE CASCADE,
+--   comment VARCHAR(255)
+-- );

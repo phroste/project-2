@@ -1,75 +1,96 @@
-// $(document).ready(function() {
-//   // selecting edit form
-//   // $("#beer").submit(function(e) {
-//   //   // preventing form from submitting
-//   //   e.preventDefault();
+console.log("script-2 connected");
 
-//   //   // grabbing form data. 'this' is referring to the form. serialize is grabbing the info from the form
-//   //   const data = $(this).serialize();
-//   //   // selecting the beer's id from hidden input and grabbing the value from it and assigning it to a variable
-//   //   const id = $("#beer-id").val();
+$(document).ready(function() {
+  //selecting edit form
+  $("#edit-movie").submit(function(e) {
+    // preventing form from submitting
+    e.preventDefault();
 
-//   //   console.log(`Form data: ${data}`);
+    // grabbing form data. 'this' is referring to the form. serialize is grabbing the info from the form
+    const data = $(this).serialize();
+    // selecting the movie's id from hidden input and grabbing the value from it and assigning it to a variable
+    const id = $("#movie-id").val();
+    console.log($("#movie-id"));
+    console.log("id working", id);
+    console.log(`Form data: ${data}`);
 
-//   //   // PUT request to /beer/:beerId to update an individual beer
-//   //   $.ajax({
-//   //     //making a request to /beers/id
-//   //     url: `/beers/${id}`,
-//   //     //the form data passed to data
-//   //     data: data,
-//   //     type: "PUT",
-//   //     success: function(data) {
-//   //       console.log("response ", data);
-//   //       // redirecting to the beer's show page on success
-//   //       // when you click the submit button, this makes it so you're redirected to the new /beers/id page
-//   //       window.location.href = `/beers/${data.id}`;
-//   //     },
-//   //     error: function(xhr, status, error) {
-//   //       // add error handler
-//   //     }
-//   //   });
-//   // });
+    // PUT request to /movies/:movieId to update an individual movie
+    $.ajax({
+      //making a request to /movies/id
+      url: `/movies/${id}`,
+      //the form data passed to data
+      data: data,
+      type: "PUT",
+      success: function(data) {
+        console.log("response ", data);
+        // redirecting to the movie's show page on success
+        // when you click the submit button, this makes it so you're redirected to the new /movies/id page
+        // window.location.href = `/movies/${data.id}`;
+        window.location.href = `/movies/`;
+      },
+      // add error handler
+      error: function(xhr, status, error) {}
+    });
+  });
+  // delete button. adding a click event listener to id delete
 
-//   // // delete button. adding a click event listener to id delete
-//   // $("#delete").click(function() {
-//   //   // selecting the beer's id from hidden input
-//   //   const id = $("#beer-id").val();
-//   //   console.log(`Deleting id: ${id}`);
+  //////////////////////////
+  //     $("#delete").click(function(e) {
+  //       e.preventDefault();
+  //       console.log("click");
+  //       // selecting the movie's id from hidden input
+  //       // const id = $("#movie-id2").val();
+  //       const id = e.target.getAttribute("data");
+  //       const data = $(e.target).serialize();
 
-//   //   // Prompt user before deleting. if you click "OK", it returns a boolean true, "CANCEL" returns false
-//   //   const confirm = window.confirm("Are you sure you want to delete this?");
-//   //   // if you click "OK", make an ajax call
-//   //   if (confirm) {
-//   //     // execute if user selects okay
-//   //     $.ajax({
-//   //       url: `/beers/${id}`, // Path
-//   //       type: "DELETE",
-//   //       success: function(data) {
-//   //         console.log("deleting ", data);
+  //       console.log(id);
+  //       console.log(`Deleting id: ${id}`);
+  //       console.log($("#movie-id2"));
+  //       // console.log(`Form data: ${data}`);
 
-//   //         // redirect to beers list after deleting an individual beer
-//   //         window.location.href = "/beers";
-//   //       },
-//   //       error: function(xhr, status, error) {
-//   //         // add error handler
-//   //       }
-//   //     });
-//   //   }
-//   // });
-//select the form
-// $("#result").submit(function(e) {
-//   e.preventDefault();
+  //       // Prompt user before deleting. if you click "OK", it returns a boolean true, "CANCEL" returns false
+  //       const confirm = window.confirm("Are you sure you want to delete this?");
+  //       // if you click "OK", make an ajax call
+  //       if (confirm) {
+  //         // execute if user selects okay
+  //         $.ajax({
+  //           url: `/movies/${id}/edit`, // Path
+  //           data: data,
+  //           type: "DELETE",
+  //           success: function(data) {
+  //             console.log("deleting ", data);
 
-//   const data = $(this).serialize();
-//   console.log("data ", data);
-
-//   $.ajax({
-//     url: "/search",
-//     type: "POST",
-//     success: function(data) {
-//       console.log("data received ", data);
-//       // window.location.href = `/movies/${data.id}`;
-//       window.location.href = `/movies/movies-new`;
-//     }
-//   });
-// });
+  //             // redirect to movies list after deleting an individual movie
+  //             window.location.href = "/movies/";
+  //           },
+  //           error: function(xhr, status, error) {
+  //             // add error handler
+  //           }
+  //         });
+  //       }
+  //     });
+  //   });
+  // });
+  ////**************//////////
+  $("#delete").click(e => {
+    e.preventDefault();
+    console.log("click");
+    const id = e.target.getAttribute("data");
+    console.log(id);
+    const data = $(e.target).serialize();
+    // Prompt user before deleting. if you click "OK", it returns a boolean true, deletes that movie id from the db, and redirects you to the main movies page. "CANCEL" returns false
+    const confirm = window.confirm("Are you sure you want to delete this?");
+    // if you click "OK", make an ajax call
+    if (confirm) {
+      // execute if user selects okay
+      $.ajax({
+        method: "delete",
+        data: data,
+        url: `/movies/${id}`,
+        success: data => {
+          window.location.href = "/movies";
+        }
+      });
+    }
+  });
+});

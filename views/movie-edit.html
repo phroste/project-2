@@ -3,54 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>{{movieData.title}}</title>
   <link rel="stylesheet" href="">
-  <script src="../jquery.js"></script>
-  <script src="../script.js"></script>
-  <script src="../script2.js"></script>
+  <script src="/jquery.js"></script>
+<!--   <script src="../script.js"></script>
+ -->  <script src="/script2.js"></script>
 </head>
 <body>
-  <p>movie-edit route working</p>
 
    <div class="main-container">
-      <h1>Edit</h1>
+      <h1>{{movieData.title}}</h1>
  
-      <form class="edit" id="beer">
-        <div>
-          <label for="name">
-            Name
+      <form class="edit" id="edit-movie">
+ 
+          <label for="anticipation">
+              Anticipation
           </label>
-          <input id="name" name="name" type="text" value={{beerData.name}}>
-        </div>
-        <div>
-          <label for="category">
-              Category
-          </label>
-          <input id="category" name="category" type="text" value={{beerData.category}}>
-        </div>
-        <div>
-          <label for="country">
-              Country
-          </label>
-          <input id="country" name="country" type="text" value="{{beerData.country}}">
-        </div>
-        <div>
-          <label for="alcohol">
-              Alcohol
-          </label>
-          <input id="alcohol" name="alcohol" type="text" value="{{beerData.alcohol}}">
-        </div>
-        <div>
-          <label for="price">
-              price
-          </label>
-          <input id="price" name="price" type="text" value="{{beerData.price}}">
-        </div>
-        <input id="beer-id" type="hidden" value="{{beerData.id}}">
-        <input type="submit" value="submit">
-        <a class="home-link" href="/movies">Back to movie list</a>
+          <input id="anticipation" name="anticipation" type="text" value="{{movieData.anticipation}}">
+  </div>
+     
+        <input id="movie-id" type="hidden" value="{{movieData.id}}">
+
+        <input type="submit" value="Update">
       </form>
+
+ <p>{{movieData.id}}</p>
+
+<!--     <div class="main-container2">
+      <form class="add" id="add-review">
+        
+        <label for="review">Add Review</label>
+
+        <input id="review" textarea rows="4" cols="5" name="review" type="text" value="">
     </div>
+
+        <input id=movie-id type="hidden" value="{{movieData.id}}">
+
+        <input type="submit" value="Add Review">
+      </form> -->
+<!--       <form>
+        <input id="delete" name="delete" type="button" value="Delete">
+        
+        <input id="movie-id2" type="hidden" value="{{movieData.id}}">
+      </form> -->
+
+ <!--   <button id="delete" data={{movieData.id}}>Delete</button> -->
+   <!-- <input id="movie-id2" type="hidden" value="{{movieData.id}}"> -->
+
+
+    <a href="/movies">Back to movie list</a>
+    
+    </div>
+
+
+
+
   
 </body>
 </html>

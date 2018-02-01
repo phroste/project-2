@@ -12,6 +12,8 @@ $(function() {
     $.ajax(
       //pass in the parameter movietitle as a string literal
       `http://www.omdbapi.com/?t=${movietitle}&apikey=a28799f5`,
+      // `http://www.omdbapi.com/?t=${movietitle}&apikey=process.env.MY_API_KEY`,
+
       {
         success: function(responseData) {
           console.log(responseData);
@@ -33,18 +35,10 @@ $(function() {
     var poster = responseData.Poster;
     console.log(poster);
     //pass the variables in as parameters in the appendToDom function and invoke it
-    // appendToDom(title, year, imdb, rottenTomatoes, anticipation, poster);
     appendToDom(title, year, imdb, anticipation, poster);
   }
 
-  function appendToDom(
-    title,
-    year,
-    imdb,
-    // rottenTomatoes,
-    anticipation,
-    poster
-  ) {
+  function appendToDom(title, year, imdb, anticipation, poster) {
     var $hiddenInput1 = $("<input>").attr({
       type: "hidden",
       value: title,
@@ -62,12 +56,6 @@ $(function() {
       value: imdb,
       name: "imdb"
     });
-
-    // var $hiddenInput4 = $("<input>").attr({
-    //   type: "hidden",
-    //   value: rottenTomatoes,
-    //   name: "rottenTomatoes"
-    // });
 
     var $hiddenInput4 = $("<input>").attr({
       type: "hidden",
@@ -88,9 +76,6 @@ $(function() {
     var $imdb = $("<div/>", {
       text: `IMDB: ${imdb}`
     });
-    // var $rottenTomatoes = $("<div/>", {
-    //   text: `Rotten Tomatoes: ${rottenTomatoes}`
-    // });
     var $anticipation = $("<div/>", {
       text: `Anticipation: ${anticipation}`
     });
@@ -99,15 +84,7 @@ $(function() {
       src: `${poster}`
     });
 
-    $("#movie-data").append(
-      $title,
-      $year,
-      $imdb,
-      // $rottenTomatoes,
-      $anticipation,
-      $poster
-    );
-    // $("#result").append($hiddenInput1, $hiddenInput2);
+    $("#movie-data").append($title, $year, $imdb, $anticipation, $poster);
     $("#result").append(
       $hiddenInput1,
       $hiddenInput2,

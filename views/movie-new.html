@@ -3,20 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>{{movieData.title}}</title>
   <link rel="stylesheet" href="">
-  <script src="../jquery.js"></script>
-  <script src="../script.js"></script>
-  <script src="../script2.js"></script>
+   <script src="../jquery.js"></script>  
+<script src="../script.js"></script>
+  <script src="/script2.js"></script>
 </head>
 <body>
-  <p>This /:newId view works</p>
 
- <form id="new-beer">
-    <input type="text" placeholder="Enter name" name="name">
-    <input type="submit" value="Create" />
-  </form>
+    {{#movieData}}
+      <div id="all-library">
+        <img src={{poster}}/>
+      </br>
+      <a href="/movies">Back to movie list</a>
+      </br>
+      </br>
+        <button><a href="/movies/{{id}}/edit">Edit Anticipation</a></button>
+        <button id="delete" data={{movieData.id}}>Delete</button>
 
+
+        <!-- <button>Delete Movie</button> -->
+        <p>Movie: {{title}}</p>
+        <p>Year: {{year}}</p>
+        <p>IMDB: {{imdb}}</p>
+        <p>Anticipation: {{anticipation}}</p>
+      </div>
+    {{/movieData}}
+
+  <!--    <button id="delete" data={{movieData.id}}>Delete</button>
+ -->
   
 </body>
 </html>

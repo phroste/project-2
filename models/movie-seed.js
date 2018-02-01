@@ -43,7 +43,6 @@ movie.create = (req, res, next) => {
         req.body.title,
         req.body.year,
         req.body.imdb,
-        // req.body.rottentomatoes,
         req.body.anticipation,
         req.body.poster
       ]
@@ -59,8 +58,9 @@ movie.create = (req, res, next) => {
 };
 
 movie.destroy = (req, res, next) => {
+  console.log("+++++++++++++++++++++++", req.params);
   db
-    .none("DELETE FROM movies WHERE id = $1", [req.params.movieId])
+    .none("DELETE FROM movies WHERE id = $1", [req.params.id])
     .then(() => {
       next();
     })
@@ -71,21 +71,12 @@ movie.destroy = (req, res, next) => {
 };
 
 movie.update = (req, res, next) => {
+  console.log(req.body);
   db
-    .one(
-      // "UPDATE movies SET title = $1, year = $2, imdb = $3, rottentomatoes = $4, anticipation = $5, poster = $6 WHERE id = $7 RETURNING *;",
-      "UPDATE movies SET title = $1, year = $2, imdb = $3, anticipation = $4, poster = $5 WHERE id = $6 RETURNING *;",
-
-      [
-        req.body.title,
-        req.body.year,
-        req.body.imdb,
-        // req.body.rottentomatoes,
-        req.body.anticipation,
-        req.body.poster,
-        req.params.movieId
-      ]
-    )
+    .one("UPDATE movies SET anticipation = $1 WHERE id = $2 RETURNING *;", [
+      req.body.anticipation,
+      req.params.movieId
+    ])
     .then(data => {
       res.locals.updatedMovieData = data;
       next();
@@ -94,5 +85,9 @@ movie.update = (req, res, next) => {
       console.log("error encountered in movie.update. Error:", error);
       next(error);
     });
+};
+
+movie.addReview = (req, res, next) => {
+  console.log();
 };
 module.exports = movie;

@@ -38,9 +38,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mustacheExpress = require("mustache-express");
-
+const morgan = require("morgan");
 // other consts
-const port = 3000;
+// const port = 3000;
+const port = process.env.port || 3000;
+const dotenv = require("dotenv").config();
+console.log(dotenv, "dotenv working!");
+console.log(process.env.MY_API_KEY);
 const app = express(); // <- the app object
 
 // ------------------------------------------------------------
@@ -63,6 +67,8 @@ app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 // sets the directory that will contain our static (not generated on the fly) resources, such as css, client-side Javascript files, and images
 app.use(express.static(__dirname + "/public"));
+
+app.use(morgan("dev"));
 
 // ------------------------------------------------------------
 // Hook up top-level routes

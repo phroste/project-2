@@ -28,22 +28,34 @@ router.get(
   }
 );
 
+//gets and renders add/search movies page
 router.get("/search", (req, res, next) => {
   // res.send("this 'movies/search' route works");
   res.render("search");
 });
 
-//get request sent from the server to client. page for each individual movie request
-router.get("/:newId", (req, res, next) => {
-  // res.send("/:newId route works");
+//gets and renders individual movie pages
+router.get("/:movieId", movie.findById, (req, res, next) => {
   res.render("movie-new");
 });
 
+//get request sent from the server to client
+//edit page for each individual movie
+router.get("/:movieId/edit", movie.findById, (req, res, next) => {
+  // res.send("/:newId route works");
+  res.render("movie-edit");
+});
+
+//post request. when user clicks 'add movie to list' button on search movie page, this adds that searched movie to main movies list page
 router.post("/movie-new", movie.create, (req, res) => {
   res.redirect("/movies");
 });
 // router.post("/movie-new", movie.create, (req, res, next) => {
 //   res.json({ id: res.locals.newMovieId, body: req.body });
+// });
+
+// router.post("/:id/edit", movie.addReview, (req, res, next) => {
+//   res.redirect("/movies");
 // });
 
 //post request
@@ -53,14 +65,18 @@ router.post("/movie-new", movie.create, (req, res) => {
 
 //edit request
 //'movies/1/edit'
-router.get("/:newId/edit", (req, res, next) => {
-  //   // res.render("edit-movie", res.locals.movieData);
-  res.render("movie-edit");
-  // res.send("edit request route working");
+// router.put("/:newId/edit", movie.update, (req, res, next) => {
+
+router.delete("/:id", movie.destroy, (req, res, next) => {
+  res.json({ id: req.params.id });
 });
 
-// router.delete("/:movieId", (req, res, next) => {
-//   // res.json({ id: req.params.movieId });
-// });
+//put request is used to edit/upate movie. updates anticipation for that particular movie in movies table
+router.put("/:movieId", movie.update, (req, res, next) => {
+  //   // res.render("edit-movie", res.locals.movieData);
+  // res.render("movie-edit");
+  res.json(res.locals.updatedMovieData);
+  // res.send("edit request route working");
+});
 
 module.exports = router;
