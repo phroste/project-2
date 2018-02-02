@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{{movieData.title}}</title>
-  <link rel="stylesheet" href="">
+   <link rel="stylesheet" type="text/css" href="/css/style.css"> 
+   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
   <script src="/jquery.js"></script>
-<!--   <script src="../script.js"></script>
- -->  <script src="/script2.js"></script>
+  <script src="/script.js"></script>
+  <script src="/script2.js"></script>
 </head>
 <body>
 
@@ -29,18 +30,38 @@
 
  <p>{{movieData.id}}</p>
 
-<!--     <div class="main-container2">
-      <form class="add" id="add-review">
-        
-        <label for="review">Add Review</label>
+<!--   <form id="review-movie" action="/movies{{id}}/edit" method="POST"> -->
 
-        <input id="review" textarea rows="4" cols="5" name="review" type="text" value="">
-    </div>
+   <div class="main-container2">
 
-        <input id=movie-id type="hidden" value="{{movieData.id}}">
+      <form class="review" id="review-movie">
+ 
+          <label for="review">
+              Review
+          </label>
+          <input id="review" name="review" type="text" value="">
+  </div>
+     
+        <input id="movie-id" type="hidden" value="{{movieData.id}}">
 
         <input type="submit" value="Add Review">
+      </form>
+
+<!--    <div class="main-container2">
+ 
+      <form class="review" id="review-movie">
+ 
+          <label for="review">
+              Review
+          </label>
+          <input id="review" name="review" type="text" value="">
+  </div>
+     
+        <input id="movie-id" type="hidden" value="{{movieData.id}}">
+
+        <input type="submit" value="Review">
       </form> -->
+
 <!--       <form>
         <input id="delete" name="delete" type="button" value="Delete">
         

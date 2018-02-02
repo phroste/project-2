@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Movies = require("../models/movies.js");
 // const movieModel = require("../models/movieseed.js");
 const movie = require("../models/movie-seed.js");
+const moment = require("moment");
 
 router.get(
   "/",
@@ -13,17 +14,15 @@ router.get(
   movie.allLibrary,
   (req, res, next) => {
     console.log("hitting movies/");
-    // res.send("this 'index' route works");
-    // res.render("main", { allMoviesData: res.locals.allMoviesData });
-    // don't need to set res.locals to an object if only displaying 1 thing
-    // res.render("index", res.locals.allMoviesData);
+    const currentTime = moment().format("LLL");
     res.render("movies", {
       allMoviesData: res.locals.allMoviesData,
       allMoviesData2: res.locals.allMoviesData2,
       allMoviesData3: res.locals.allMoviesData3,
       allMoviesData4: res.locals.allMoviesData4,
       allMoviesData5: res.locals.allMoviesData5,
-      allLibrary: res.locals.movieData
+      allLibrary: res.locals.movieData,
+      time: currentTime
     });
   }
 );
@@ -54,9 +53,12 @@ router.post("/movie-new", movie.create, (req, res) => {
 //   res.json({ id: res.locals.newMovieId, body: req.body });
 // });
 
+//post request. when user clicks 'add review' button on movie/:id/edit page, this adds the comment to the reviews table
+
 // router.post("/:id/edit", movie.addReview, (req, res, next) => {
-//   res.redirect("/movies");
-// });
+router.post("/:movieId", movie.addReview, movie.addReview, (req, res, next) => {
+  res.redirect("/movies");
+});
 
 //post request
 // router.post("/", (req, res, next) => {

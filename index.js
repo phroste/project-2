@@ -1,39 +1,3 @@
-// //imports express, bodyParser(returns middleware that only parses json), morgan(our logger), & mustacheExpress(the mustache templating engine) from node modules
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const morgan = require("morgan");
-// const mustacheExpress = require("mustache-express");
-
-// //hook up movies router
-// const moviesRouter = require("./controllers/movies.js");
-
-// const app = express();
-// const PORT = process.env.PORT || 3000;
-
-// //connect the mustache templating engine with express
-// app.engine("html", mustacheExpress());
-// //declare a views and public directories to be accessible from our app
-// app.set("view engine", "html");
-// app.set("views", __dirname + "/views");
-// app.use(express.static(__dirname + "/public"));
-
-// //link morgan and bodyParser middleware to get logging and so we can parse request body data
-// app.use(morgan("dev"));
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-
-// app.get("/", (req, res) => {
-//   res.render("main");
-// });
-
-// //attach the movies router to the app
-// app.use("/movies", moviesRouter);
-
-// //kick off the server by listening to the port declared on line 8
-// app.listen(PORT, () => {
-//   console.log("Server started on " + PORT);
-// });
-
 // require necessary top-level modules
 const express = require("express");
 const bodyParser = require("body-parser");

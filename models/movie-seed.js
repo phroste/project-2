@@ -87,7 +87,39 @@ movie.update = (req, res, next) => {
     });
 };
 
+// movie.addReview = (req, res, next) => {
+//   // res.send(req.body);
+//   console.log("working", req.body);
+//   db
+//     .one("INSERT INTO reviews (comment) VALUES ($1) RETURNING *;", [
+//       req.body.comment
+//     ])
+//     .then(data => {
+//       res.locals.newMovieId = data.id;
+//       next();
+//     })
+//     .catch(error => {
+//       console.log("error encountered in movie.addReview. Error:", error);
+//       next(error);
+//     });
+// };
+
 movie.addReview = (req, res, next) => {
-  console.log();
+  // res.send(req.body);
+  console.log("working", req.body);
+  db
+    .one("INSERT INTO reviews (comment) VALUES ($1) RETURNING *;", [
+      req.body.comment
+    ])
+    .then(data => {
+      res.locals.comment = data.id;
+      console.log("$$$$$$$$$$$$$$$$$$$$$$$", data);
+      next();
+    })
+    .catch(error => {
+      console.log("error encountered in movie.addReview. Error:", error);
+      next(error);
+    });
 };
+
 module.exports = movie;

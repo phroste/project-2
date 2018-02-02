@@ -69,6 +69,11 @@ $(function() {
       name: "poster"
     });
 
+    var $addMovieButton = $("<button>", {
+      text: "Add Movie to List",
+      id: "add-movie"
+    });
+
     var $title = $("<div/>", { text: `Title: ${title}` });
     var $year = $("<div/>", {
       text: `Year: ${year}`
@@ -90,7 +95,8 @@ $(function() {
       $hiddenInput2,
       $hiddenInput3,
       $hiddenInput4,
-      $hiddenInput5
+      $hiddenInput5,
+      $addMovieButton
     );
   }
 

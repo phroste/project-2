@@ -4,27 +4,22 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Movies to Watch</title>
-  <link rel="stylesheet" href="">
-  <style>
-    #container {
-      /*display: flex;
-      flex-direction: column;
-      justify-content: : center;
-      align-content: center;*/
-      margin-left: 40%;
-    }
-
-  </style>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/style.css">  
 </head>
+
 <body>
    <div id="container">
-
+    
     <h1>Movies to Watch</h1>
- <!--    <a href="/movies">All the Movies to Watch</a> -->
+    {{time}}
+    </br>
+    </br>
     <a href="/movies/search">Add a New Movie</a>
 
     {{#allMoviesData}}
     <div id="movie-1">
+    </br>
       <img src={{Poster}}/>
       <p>Movie: {{Title}}</p>
       <p>Year: {{Year}}</p>
