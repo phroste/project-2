@@ -37,7 +37,6 @@ movie.create = (req, res, next) => {
   db
     // .one(
     .manyOrNone(
-      // "INSERT INTO movies (title, year, imdb, rottentomatoes, anticipation, poster) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;",
       "INSERT INTO movies (title, year, imdb, anticipation, poster) VALUES ($1, $2, $3, $4, $5) RETURNING *;",
       [
         req.body.title,

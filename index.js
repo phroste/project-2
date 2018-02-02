@@ -6,9 +6,9 @@ const morgan = require("morgan");
 // other consts
 // const port = 3000;
 const port = process.env.port || 3000;
-const dotenv = require("dotenv").config();
-console.log(dotenv, "dotenv working!");
-console.log(process.env.MY_API_KEY);
+// const dotenv = require("dotenv").config();
+// console.log(dotenv, "dotenv working!");
+// console.log(process.env.MY_API_KEY);
 const app = express(); // <- the app object
 
 // ------------------------------------------------------------

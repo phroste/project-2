@@ -12,8 +12,6 @@ $(function() {
     $.ajax(
       //pass in the parameter movietitle as a string literal
       `http://www.omdbapi.com/?t=${movietitle}&apikey=a28799f5`,
-      // `http://www.omdbapi.com/?t=${movietitle}&apikey=process.env.MY_API_KEY`,
-
       {
         success: function(responseData) {
           console.log(responseData);
@@ -30,7 +28,6 @@ $(function() {
     var title = responseData.Title;
     var year = responseData.Year;
     var imdb = responseData.Ratings[0]["Value"];
-    // var rottenTomatoes = responseData.Ratings[1]["Value"];
     var anticipation = responseData.Metascore;
     var poster = responseData.Poster;
     console.log(poster);

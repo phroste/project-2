@@ -6,7 +6,6 @@ const Movies = {};
 Movies.allMovies = (req, res, next) => {
   axios({
     url: "http://www.omdbapi.com/?t=bad+boys+ii&apikey=a28799f5",
-    // url: "http://www.omdbapi.com/?t=bad+boys+ii&apikey=process.env.MY_API_KEY",
 
     method: "get"
   })
@@ -25,8 +24,6 @@ Movies.allMovies = (req, res, next) => {
 Movies.allMovies2 = (req, res, next) => {
   axios({
     url: "http://www.omdbapi.com/?t=children+of+men&apikey=a28799f5",
-    // url:
-    //   "http://www.omdbapi.com/?t=children+of+men&apikey=process.env.MY_API_KEY",
 
     method: "get"
   })
@@ -45,8 +42,6 @@ Movies.allMovies2 = (req, res, next) => {
 Movies.allMovies3 = (req, res, next) => {
   axios({
     url: "http://www.omdbapi.com/?t=28+days+later...&apikey=a28799f5",
-    // url:
-    //   "http://www.omdbapi.com/?t=28+days+later...&apikey=process.env.MY_API_KEY",
 
     method: "get"
   })
@@ -65,7 +60,6 @@ Movies.allMovies3 = (req, res, next) => {
 Movies.allMovies4 = (req, res, next) => {
   axios({
     url: "http://www.omdbapi.com/?i=tt0071562&apikey=a28799f5",
-    // url: "http://www.omdbapi.com/?i=tt0071562&apikey=process.env.MY_API_KEY",
 
     method: "get"
   })
@@ -84,7 +78,6 @@ Movies.allMovies4 = (req, res, next) => {
 Movies.allMovies5 = (req, res, next) => {
   axios({
     url: "http://www.omdbapi.com/?t=pulp+fiction&apikey=a28799f5",
-    // url: "http://www.omdbapi.com/?t=pulp+fiction&apikey=process.env.MY_API_KEY",
 
     method: "get"
   })

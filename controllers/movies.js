@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Movies = require("../models/movies.js");
-// const movieModel = require("../models/movieseed.js");
 const movie = require("../models/movie-seed.js");
 const moment = require("moment");
 
@@ -49,25 +48,11 @@ router.get("/:movieId/edit", movie.findById, (req, res, next) => {
 router.post("/movie-new", movie.create, (req, res) => {
   res.redirect("/movies");
 });
-// router.post("/movie-new", movie.create, (req, res, next) => {
-//   res.json({ id: res.locals.newMovieId, body: req.body });
-// });
 
-//post request. when user clicks 'add review' button on movie/:id/edit page, this adds the comment to the reviews table
-
-// router.post("/:id/edit", movie.addReview, (req, res, next) => {
+//post request for movie comments. not working yet
 router.post("/:movieId", movie.addReview, movie.addReview, (req, res, next) => {
   res.redirect("/movies");
 });
-
-//post request
-// router.post("/", (req, res, next) => {
-//   res.json({ id: res.locals.newMovieId, body: req.body });
-// });
-
-//edit request
-//'movies/1/edit'
-// router.put("/:newId/edit", movie.update, (req, res, next) => {
 
 router.delete("/:id", movie.destroy, (req, res, next) => {
   res.json({ id: req.params.id });
@@ -75,10 +60,7 @@ router.delete("/:id", movie.destroy, (req, res, next) => {
 
 //put request is used to edit/upate movie. updates anticipation for that particular movie in movies table
 router.put("/:movieId", movie.update, (req, res, next) => {
-  //   // res.render("edit-movie", res.locals.movieData);
-  // res.render("movie-edit");
   res.json(res.locals.updatedMovieData);
-  // res.send("edit request route working");
 });
 
 module.exports = router;
