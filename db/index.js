@@ -12,7 +12,7 @@ const cn = {
   user: "Macbook"
 };
 
-const db = pgp(cn);
-// const db = pgp(process.env.DATABASE_URL || cn);
+// const db = pgp(cn);
+const db = pgp(process.env.DATABASE_URL || cn);
 
 module.exports = db;
