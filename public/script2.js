@@ -65,7 +65,9 @@ $(document).ready(function() {
     console.log(id);
     const data = $(e.target).serialize();
     // Prompt user before deleting. if you click "OK", it returns a boolean true, deletes that movie id from the db, and redirects you to the main movies page. "CANCEL" returns false
-    const confirm = window.confirm("Are you sure you want to delete this?");
+    const confirm = window.confirm(
+      "Are you sure you want to delete this movie?"
+    );
     // if you click "OK", make an ajax call
     if (confirm) {
       // execute if user selects okay
