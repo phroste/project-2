@@ -11,7 +11,7 @@ $(function() {
   function makeCall(movietitle) {
     $.ajax(
       //pass in the parameter movietitle as a string literal
-      `http://www.omdbapi.com/?t=${movietitle}&apikey=a28799f5`,
+      `https://www.omdbapi.com/?t=${movietitle}&apikey=a28799f5`,
       {
         success: function(responseData) {
           console.log(responseData);
